@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Renk Seçici</title>
+</head>
+<body>
+    <h1>Direnç Kontrolcüsü</h1>
+
+    <label>1. Bant:</label>
+    <select id="bant1" onchange="hesapla()">
+        <option value="0">Siyah (0)</option>
+        <option value="1">Kahverengi (1)</option>
+        <option value="2">Kırmızı (2)</option>
+        <option value="3">Turuncu (3)</option>
+        <option value="4">Sarı (4)</option>
+        <option value="5">Yeşil (5)</option>
+        <option value="6">Mavi (6)</option>
+        <option value="7">Mor (7)</option>
+        <option value="8">Gri (8)</option>
+        <option value="9">Beyaz (9)</option>
+    </select>
+    <br><br>
+
+    <label>2. Bant:</label>
+    <select id="bant2" onchange="hesapla()">
+        <option value="0">Siyah (0)</option>
+        <option value="1">Kahverengi (1)</option>
+        <option value="2">Kırmızı (2)</option>
+        <option value="3">Turuncu (3)</option>
+        <option value="4">Sarı (4)</option>
+        <option value="5">Yeşil (5)</option>
+        <option value="6">Mavi (6)</option>
+        <option value="7">Mor (7)</option>
+        <option value="8">Gri (8)</option>
+        <option value="9">Beyaz (9)</option>
+    </select>
+    <br><br>
+
+    <label>Çarpan:</label>
+    <select id="carpan" onchange="hesapla()">
+        <option value="1">Siyah (x1)</option>
+        <option value="10">Kahverengi (x10)</option>
+        <option value="100">Kırmızı (x100)</option>
+        <option value="1000">Turuncu (x1k)</option>
+        <option value="10000">Sarı (x10k)</option>
+        <option value="100000">Yeşil (x100k)</option>
+    </select>
+    <br><br>
+
+    <h3 id="sonuc">Direnç Değeri: 0 Ohm</h3>
+
+    <script>
+        function hesapla() {
+    let b1 = document.getElementById("bant1").value;
+    let b2 = document.getElementById("bant2").value;
+    let carpan = document.getElementById("carpan").value;
+
+    let ikiBasamakliSayi = parseInt(b1 + b2);
+    let ohmDegeri = ikiBasamakliSayi * parseInt(carpan);
+
+    // Kontrolleri fonksiyonun içinde yapmalıyız:
+    if (ohmDegeri >= 1000000) {
+        let megaOhm = ohmDegeri / 1000000;
+        document.getElementById("sonuc").innerHTML = "Direnç Değeri: " + megaOhm + " MΩ";
+    } 
+    else if (ohmDegeri >= 1000) {
+        let kiloOhm = ohmDegeri / 1000;
+        document.getElementById("sonuc").innerHTML = "Direnç Değeri: " + kiloOhm + " kΩ";
+    } 
+    else {
+        document.getElementById("sonuc").innerHTML = "Direnç Değeri: " + ohmDegeri + " Ohm";
+    }
+}
+    </script>
+</body>
+</html>
